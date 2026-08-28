@@ -1,0 +1,15 @@
+Aragorn (Age 87)
+  Strength: 10
+  Dexterity: 14
+  Constitution: 14
+  Intelligence: 11
+  Wisdom: 15
+  Charisma: 11
+
+Legolas (Age 2931)
+  Strength: 10
+  Dexterity: 13
+  Constitution: 15
+  Intelligence: 14
+  Wisdom: 13
+  Charisma: 10
