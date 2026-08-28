@@ -141,14 +141,14 @@ def show_valentine_menu():
 
 if __name__ == '__main__':
     # Test the validation rules with a few examples
-    print(is_valid_name('Vegetable Soup of Valentines-day'))   # (True, ...)
-    print(is_valid_name('vegetable Soup of Valentines-day'))   # (False, ...) - first letter not V
-    print(is_valid_name('Vegetable Soup 2 of Valentines-day')) # (False, ...) - has digit
-    print(is_valid_name('Valentine Meal'))                      # (False, ...) - only 1 "e"... wait check
+    print(is_valid_name('Vegetable Soup of Valentines-day'))   
+    print(is_valid_name('vegetable Soup of Valentines-day')) 
+    print(is_valid_name('Vegetable Soup 2 of Valentines-day'))
+    print(is_valid_name('Valentine Meal'))        
 
-    print(is_valid_price('12,14'))    # (True, ...)
-    print(is_valid_price('123,14'))   # (False, ...)
-    print(is_valid_price('12,15'))    # (False, ...)
+    print(is_valid_price('12,14')) 
+    print(is_valid_price('123,14')) 
+    print(is_valid_price('12,15'))   
 
     print()
     show_valentine_menu()

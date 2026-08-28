@@ -18,7 +18,8 @@ class AnagramChecker:
             if self.is_anagram(candidate, word) and candidate.lower() != word.lower():
                 anagrams.append(candidate)
         return anagrams
-    from anagram_checker import AnagramChecker
+    
+from anagram_checker import AnagramChecker
 
 
 def show_menu():
