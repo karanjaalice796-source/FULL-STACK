@@ -19,7 +19,7 @@ class AnagramChecker:
                 anagrams.append(candidate)
         return anagrams
     
-from anagram_checker import AnagramChecker
+from anagramchecker import AnagramChecker
 
 
 def show_menu():
