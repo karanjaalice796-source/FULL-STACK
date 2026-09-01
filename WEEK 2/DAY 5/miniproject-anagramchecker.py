@@ -43,7 +43,6 @@ def get_valid_word():
 
     return word
 
-
 def display_word_info(checker, word):
     is_valid = checker.is_valid_word(word)
     anagrams = checker.get_anagrams(word)
