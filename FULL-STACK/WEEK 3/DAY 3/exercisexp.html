@@ -1,0 +1,115 @@
+<!--ex1. change the article-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1: Article</title>
+    <style>
+        /* Bonus: Fade CSS Animation */
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1> Some Facts </h1>
+        <h2> The Chocolate </h2>
+        <h3> History of the chocolate </h3>
+        <p> Chocolate is made from tropical Theobroma cacao tree seeds. Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+        <p> After the European discovery of the Americas, chocolate became very popular in the wider world, and its demand exploded. </p>
+        <p> Chocolate has since become a popular food product that millions enjoy every day, thanks to its unique, rich, and sweet taste.</p> 
+        <p> But what effect does eating chocolate have on our health?</p> 
+    </article>
+
+    <button id="boldBtn">Make Text Bold</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--ex2.Work with Forms -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Exercise 2: Forms</title>
+</head>
+<body>
+    <form id="userForm">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="firstname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lastname"><br><br>
+        <input type="submit" value="Submit" id="submit">
+    </form> 
+    <ul class="usersAnswer"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--ex3. Transform the Sentence-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Exercise 3: Highlight</title>
+</head>
+<body>
+    <p id="targetPara">
+        <strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. 
+        At the <strong>end</strong> you <strong>will</strong> be great Developers! 
+        <strong>Enjoy</strong> the <strong>JavaScript</strong> lessons
+    </p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--ex4. volume of a sphere-->
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <title>Volume of a Sphere</title> 
+    <style>  
+        body {
+            padding-top: 30px;
+        } 
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }  
+    </style> 
+</head> 
+<body> 
+    <p>Input radius value and get the volume of a sphere.</p> 
+    <form id="MyForm"> 
+        <label for="radius">Radius</label>
+        <input type="text" name="radius" id="radius" required> 
+        <label for="volume">Volume</label>
+        <input type="text" name="volume" id="volume" readonly> 
+        <input type="submit" value="Calculate" id="submit">    
+    </form> 
+
+    <script>
+        const myForm = document.getElementById("MyForm");
+
+        myForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const radiusInput = document.getElementById("radius").value;
+            const radius = parseFloat(radiusInput);
+
+            if (!isNaN(radius) && radius >= 0) {
+                // Sphere Volume Formula: (4/3) * pi * r^3
+                const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+                
+                // Display calculated volume rounded to 4 decimal places
+                document.getElementById("volume").value = volume.toFixed(4);
+            } else {
+                alert("Please enter a valid positive number for the radius.");
+            }
+        });
+    </script>
+</body> 
+</html>

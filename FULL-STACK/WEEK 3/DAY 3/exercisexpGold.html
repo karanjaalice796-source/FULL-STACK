@@ -1,0 +1,73 @@
+<!--ex1. select a kind of music-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1: Select</title>
+</head>
+<body>
+    <select id="genres">
+        <option value="rock">Rock</option>
+        <option value="blues" selected>Blues</option>
+    </select>
+
+    <script>
+        const select = document.getElementById("genres");
+        console.log("Initially selected value:", select.value);
+        const newOption = new Option("Classic", "classic");
+        select.add(newOption);
+        select.value = "classic";
+        console.log("Newly selected value:", select.value);
+    </script>
+</body>
+</html>
+
+<!--ex2. delete colors-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2: Delete Colors</title>
+</head>
+<body>
+    <form>
+        <select id="colorSelect">
+            <option>Red</option>
+            <option>Green</option>
+            <option>White</option>
+            <option>Black</option>
+        </select>
+        <input type="button" value="Select and Remove" id="removeBtn">
+    </form>
+
+    <script>
+        const removeBtn = document.getElementById("removeBtn");
+        const colorSelect = document.getElementById("colorSelect");
+
+        function removecolor() {
+
+            const selectedIndex = colorSelect.selectedIndex;
+
+            if (selectedIndex !== -1) {
+                colorSelect.remove(selectedIndex);
+            }
+        }
+
+        removeBtn.addEventListener("click", removecolor);
+    </script>
+</body>
+</html>
+
+<!--ex3. create a shopping list-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 3: Shopping List</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

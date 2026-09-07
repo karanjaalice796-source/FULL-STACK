@@ -1,0 +1,65 @@
+<!--ex1. timer-->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    p {
+      background: yellow;
+      color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <button id="clear">Clear Interval</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--ex2. move the box-->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background: yellow;
+    }
+    #animate {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <p><button onclick="myMove()">Click Me</button></p>
+    <div id="container">
+      <div id="animate"></div>
+    </div>
+
+    <script>
+    function myMove() {
+        const elem = document.getElementById("animate");
+        const container = document.getElementById("container");
+        
+        let position = 0;
+        // Target distance = Container Width (400px) - Element Width (50px) = 350px
+        const maxPosition = container.clientWidth - elem.clientWidth;
+
+        const animationInterval = setInterval(() => {
+            if (position >= maxPosition) {
+                clearInterval(animationInterval); // Stop when hitting the right edge
+            } else {
+                position++;
+                elem.style.left = position + "px"; // Move 1px right
+            }
+        }, 1); // Executes every 1 millisecond
+    }
+    </script>
+</body>
+</html>
