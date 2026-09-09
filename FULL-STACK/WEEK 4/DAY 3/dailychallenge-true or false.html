@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Truthy</title>
+</head>
+<body>
+	<h1>All Truthy</h1>
+	<pre id="results"></pre>
+
+	<script>
+		const allTruthy = (...values) => values.every(Boolean);
+
+		const examples = [
+			[true, true, true],
+			[true, false, true],
+			[5, 4, 3, 2, 1, 0],
+		];
+
+		const results = examples.map((values) =>
+			`allTruthy(${values.join(", ")}) => ${allTruthy(...values)}`,
+		);
+
+		document.querySelector("#results").textContent = results.join("\n");
+		console.log(allTruthy(true, true, true));
+		console.log(allTruthy(true, false, true));
+		console.log(allTruthy(5, 4, 3, 2, 1, 0));
+	</script>
+</body>
+</html>

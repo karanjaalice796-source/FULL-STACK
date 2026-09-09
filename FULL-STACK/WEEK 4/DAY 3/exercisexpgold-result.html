@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Submitted Form Data</title>
+</head>
+<body>
+	<h1>Submitted data</h1>
+	<section id="submitted-data"></section>
+
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const name = params.get("name") || "Not provided";
+		const lastname = params.get("lastname") || "Not provided";
+		const section = document.querySelector("#submitted-data");
+
+		const nameParagraph = document.createElement("p");
+		nameParagraph.textContent = `Name: ${name}`;
+		section.append(nameParagraph);
+
+		const lastnameParagraph = document.createElement("p");
+		lastnameParagraph.textContent = `Last name: ${lastname}`;
+		section.append(lastnameParagraph);
+	</script>
+</body>
+</html>

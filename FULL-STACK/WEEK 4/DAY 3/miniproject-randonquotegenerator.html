@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random Quote Generator</title>
+	<style>
+		:root {
+			--ink: #17212b;
+			--muted: #d7dee4;
+			--accent: #010101;
+			--paper: #40708a;
+			--line: #18140f;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			background: #3b32b5;
+			color: var(--ink);
+			font-family: Georgia, "Times New Roman", serif;
+			margin: 0;
+			padding: 32px 16px;
+		}
+
+		main { margin: 0 auto; max-width: 760px; }
+		h1 { font-size: clamp(2rem, 6vw, 4.5rem); line-height: .95; margin: 0 0 10px; }
+		.intro { color: var(--muted); font-family: Arial, sans-serif; margin: 0 0 28px; }
+		.panel, form { background: var(--paper); border: 1px solid var(--line); padding: 20px; }
+		.panel { margin-bottom: 18px; min-height: 220px; }
+		#quote-text { font-size: clamp(1.5rem, 4vw, 2.4rem); line-height: 1.15; margin: 18px 0; }
+		#quote-author { color: var(--accent); font-size: 1.1rem; font-style: italic; }
+		form { display: grid; gap: 10px; margin-bottom: 18px; }
+		.form-title { font-size: 1.2rem; margin: 0; }
+		input, select, button { font: inherit; }
+		input, select { border: 1px solid var(--line); padding: 10px; width: 100%; }
+		button { background: var(--ink); border: 0; color: white; cursor: pointer; padding: 10px 14px; }
+		button:hover { background: var(--accent); }
+		.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+		.status { color: var(--muted); font-family: Arial, sans-serif; min-height: 1.4em; }
+		.quote-meta { color: var(--muted); font-family: Arial, sans-serif; font-size: .9rem; }
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Random<br>quotes.</h1>
+		<p class="intro">A small collection of words worth carrying around.</p>
+
+		<section class="panel" aria-live="polite">
+			<p id="quote-text">Press the button to draw a quote.</p>
+			<p id="quote-author"></p>
+			<p class="quote-meta" id="quote-meta"></p>
+			<div class="actions">
+				<button type="button" id="generate-button">Generate Quote</button>
+				<button type="button" id="like-button">Like</button>
+			</div>
+		</section>
+
+		<section class="actions" aria-label="Quote details">
+			<button type="button" id="characters-button">Characters (spaces)</button>
+			<button type="button" id="characters-no-spaces-button">Characters (no spaces)</button>
+			<button type="button" id="words-button">Words</button>
+		</section>
+		<p class="status" id="status" aria-live="polite"></p>
+
+		<form id="add-quote-form">
+			<h2 class="form-title">Add a quote</h2>
+			<label for="new-quote">Quote</label>
+			<input id="new-quote" name="quote" required>
+			<label for="new-author">Author</label>
+			<input id="new-author" name="author" required>
+			<button type="submit">Add Quote</button>
+		</form>
+
+		<form id="filter-form">
+			<h2 class="form-title">Browse by author</h2>
+			<label for="author-filter">Author</label>
+			<select id="author-filter" name="author">
+				<option value="">All authors</option>
+			</select>
+			<div class="actions">
+				<button type="submit">Filter Quotes</button>
+				<button type="button" id="previous-button">Previous</button>
+				<button type="button" id="next-button">Next</button>
+			</div>
+		</form>
+	</main>
+
+	<script src="miniproject-randonquotegenerator.js"></script>
+</body>
+</html>

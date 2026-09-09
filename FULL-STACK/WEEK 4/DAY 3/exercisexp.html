@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML Forms and JSON Mario</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.5;
+			max-width: 760px;
+			margin: 0 auto;
+			padding: 24px;
+		}
+
+		section {
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 24px;
+			padding-bottom: 24px;
+		}
+
+		form {
+			display: grid;
+			gap: 10px;
+			max-width: 420px;
+			margin-bottom: 16px;
+		}
+
+		input,
+		textarea {
+			box-sizing: border-box;
+			font: inherit;
+			padding: 8px;
+			width: 100%;
+		}
+
+		textarea {
+			min-height: 110px;
+			resize: vertical;
+		}
+
+		input[type="submit"] {
+			cursor: pointer;
+			width: fit-content;
+		}
+
+		pre {
+			background: #f4f4f4;
+			overflow-x: auto;
+			padding: 16px;
+		}
+	</style>
+</head>
+<body>
+	<h1>HTML Forms and JSON Mario</h1>
+
+	<section>
+		<h2>Exercise 1: GET form</h2>
+		<form action="" method="get">
+			<label for="get-name">Name</label>
+			<input id="get-name" name="name" type="text" required>
+
+			<label for="get-message">Message</label>
+			<textarea id="get-message" name="message" required></textarea>
+
+			<input type="submit" value="Send">
+		</form>
+		<p>With GET, the submitted name and message appear in the URL as query parameters.</p>
+	</section>
+
+	<section>
+		<h2>Exercise 2: POST form</h2>
+		<form action="" method="post">
+			<label for="post-name">Name</label>
+			<input id="post-name" name="name" type="text" required>
+
+			<label for="post-message">Message</label>
+			<textarea id="post-message" name="message" required></textarea>
+
+			<input type="submit" value="Send">
+		</form>
+		<p>With POST, the submitted data appears in the request payload in the browser's Network tab, not in the URL.</p>
+	</section>
+
+	<section>
+		<h2>Exercise 3: JSON Mario</h2>
+		<p>The nested character objects stay nested when the JavaScript object is converted to JSON.</p>
+		<h3>Compact JSON</h3>
+		<pre id="compact-json"></pre>
+		<h3>Pretty JSON</h3>
+		<pre id="pretty-json"></pre>
+	</section>
+
+	<script>
+		const marioGame = {
+			detail: "An amazing game!",
+			characters: {
+				mario: {
+					description: "Small and jumpy. Likes princesses.",
+					height: 10,
+					weight: 3,
+					speed: 12,
+				},
+				bowser: {
+					description: "Big and green, Hates princesses.",
+					height: 16,
+					weight: 6,
+					speed: 4,
+				},
+				princessPeach: {
+					description: "Beautiful princess.",
+					height: 12,
+					weight: 2,
+					speed: 2,
+				},
+			},
+		};
+
+		const compactJson = JSON.stringify(marioGame);
+		const prettyJson = JSON.stringify(marioGame, null, 2);
+
+		document.querySelector("#compact-json").textContent = compactJson;
+		document.querySelector("#pretty-json").textContent = prettyJson;
+
+		console.log("Mario JSON object:", JSON.parse(compactJson));
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form</title>
+</head>
+<body>
+	<h1>Form</h1>
+
+	<form id="user-form">
+		<label for="name">Name</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="lastname">Last name</label>
+		<input type="text" id="lastname" name="lastname" required>
+
+		<button type="submit">Send</button>
+	</form>
+
+	<pre id="output"></pre>
+
+	<script>
+		const form = document.querySelector("#user-form");
+		const output = document.querySelector("#output");
+
+		form.addEventListener("submit", (event) => {
+			event.preventDefault();
+
+			const formData = new FormData(form);
+			const user = Object.fromEntries(formData.entries());
+			output.textContent = JSON.stringify(user);
+		});
+	</script>
+</body>
+</html>
