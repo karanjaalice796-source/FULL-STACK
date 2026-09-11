@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Times</title>
+</head>
+<body>
+    <main>
+        <h1>Sunrise Times</h1>
+
+        <form id="sunriseForm">
+            <fieldset>
+                <legend>First city</legend>
+                <label for="parisLatitude">Latitude</label>
+                <input id="parisLatitude" name="parisLatitude" type="number" step="any" value="48.864716" required>
+                <label for="parisLongitude">Longitude</label>
+                <input id="parisLongitude" name="parisLongitude" type="number" step="any" value="2.349014" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Second city</legend>
+                <label for="newYorkLatitude">Latitude</label>
+                <input id="newYorkLatitude" name="newYorkLatitude" type="number" step="any" value="40.730610" required>
+                <label for="newYorkLongitude">Longitude</label>
+                <input id="newYorkLongitude" name="newYorkLongitude" type="number" step="any" value="-73.935242" required>
+            </fieldset>
+
+            <button type="submit">GET SUNRISE TIMES</button>
+        </form>
+
+        <p id="statusMessage" aria-live="polite"></p>
+        <section id="results" aria-live="polite"></section>
+    </main>
+
+    <script src="dailychallenge-promiseall().js" defer></script>
+</body>
+</html>

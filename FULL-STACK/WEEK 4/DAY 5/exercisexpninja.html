@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giphy Search</title>
+</head>
+<body>
+    <main>
+        <h1>Giphy Search</h1>
+
+        <form id="gifForm">
+            <label for="category">GIF category</label>
+            <input id="category" name="category" type="text" placeholder="Try football" required>
+            <button type="submit">SEARCH</button>
+        </form>
+
+        <button id="deleteAll" type="button">DELETE ALL</button>
+        <p id="statusMessage" aria-live="polite"></p>
+        <section id="gifs" aria-live="polite"></section>
+    </main>
+
+    <script src="exercisexpninja.js" defer></script>
+</body>
+</html>
