@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="pokedex app.css">
+</head>
+<body>
+
+    <div class="pokedex-container">
+        <div class="header-banner">
+            <h1 class="logo-text"><i class="fa-solid fa-gamepad"></i> Pokédex</h1>
+        </div>
+
+        <div class="screen">
+            <div id="loading" class="loading hidden">
+                <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
+                <p>Loading Pokémon...</p>
+            </div>
+
+            <div id="error" class="error hidden">
+                <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+                <p>Oh no! That Pokemon isn’t available…</p>
+            </div>
+
+            <div id="pokemon-card" class="pokemon-card hidden">
+                <div class="image-container">
+                    <img id="poke-img" src="" alt="Pokémon Image">
+                </div>
+                <div class="details">
+                    <h2 id="poke-name">Name</h2>
+                    <p class="poke-id">ID: <span id="poke-id">#000</span></p>
+                    <div class="stats-row">
+                        <p><strong>Height:</strong> <span id="poke-height">--</span></p>
+                        <p><strong>Weight:</strong> <span id="poke-weight">--</span></p>
+                    </div>
+                    <p><strong>Type:</strong> <span id="poke-type">--</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev-btn" title="Previous Pokemon"><i class="fa-solid fa-caret-left"></i> Prev</button>
+                <button id="random-btn" title="Random Pokemon"><i class="fa-solid fa-shuffle"></i> Random</button>
+                <button id="next-btn" title="Next Pokemon">Next <i class="fa-solid fa-caret-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="pokedex app.js"></script>
+</body>
+</html>
