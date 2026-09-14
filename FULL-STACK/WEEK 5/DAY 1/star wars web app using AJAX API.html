@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Character Finder</title>
+    <!-- FontAwesome for Loading Spinner -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="star wars web app using AJAX API.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Star Wars Character Generator</h1>
+        
+        <button id="btn">Get Random Character</button>
+
+        <div id="card" class="card hidden">
+            <div id="content">
+                <h2 id="name">Character Name</h2>
+                <p><strong>Height:</strong> <span id="height">--</span></p>
+                <p><strong>Gender:</strong> <span id="gender">--</span></p>
+                <p><strong>Birth Year:</strong> <span id="birth-year">--</span></p>
+                <p><strong>Home World:</strong> <span id="homeworld">--</span></p>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
+            <p>Loading character data...</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+            <p>Oh no! That person couldn't be fetched. Try again!</p>
+        </div>
+    </div>
+
+    <script src="star wars web app using AJAX API.js"></script>
+</body>
+</html>

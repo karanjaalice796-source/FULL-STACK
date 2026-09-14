@@ -1,0 +1,131 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.converter-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 400px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input, select {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+}
+
+.currency-selectors {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.currency-selectors .form-group {
+    flex: 1;
+}
+
+#switch-btn {
+    background: #e9ecef;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 22px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#switch-btn:hover {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    transform: rotate(180deg);
+}
+
+#convert-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#convert-btn:hover {
+    background-color: #0056b3;
+}
+
+.result-container {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    text-align: center;
+    border-left: 4px solid #28a745;
+}
+
+#exchange-rate-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 5px 0;
+}
+
+#conversion-result {
+    font-size: 1.4rem;
+    color: #28a745;
+    margin: 0;
+}
+
+.error {
+    margin-top: 15px;
+    color: #dc3545;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}

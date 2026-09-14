@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="dailychallenge-currencyconverter.css">
+    <!-- FontAwesome for the swap icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="converter-container">
+        <h1>Currency Converter</h1>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" value="1" min="0" step="any">
+        </div>
+
+        <div class="currency-selectors">
+            <div class="form-group">
+                <label for="currency-from">From:</label>
+                <select id="currency-from"></select>
+            </div>
+
+            <button id="switch-btn" title="Swap Currencies">
+                <i class="fa-solid fa-right-left"></i>
+            </button>
+
+            <div class="form-group">
+                <label for="currency-to">To:</label>
+                <select id="currency-to"></select>
+            </div>
+        </div>
+
+        <button id="convert-btn">Convert</button>
+
+        <div id="result-container" class="result-container hidden">
+            <p id="exchange-rate-text"></p>
+            <h2 id="conversion-result"></h2>
+        </div>
+        
+        <div id="error-msg" class="error hidden"></div>
+    </div>
+
+    <script src="dailychallenge-currencyconverter.js"></script>
+</body>
+</html>
