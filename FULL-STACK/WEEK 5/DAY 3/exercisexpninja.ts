@@ -1,3 +1,7 @@
+// Treat this exercise as its own module so its example names do not leak into
+// the other Day 3 exercise files.
+export {};
+
 //Ex1: Advanced Access Modifiers and Inheritance
 
 class Employee {

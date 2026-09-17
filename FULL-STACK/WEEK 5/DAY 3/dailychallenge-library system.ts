@@ -1,3 +1,6 @@
+// Treat this challenge as its own module so it can compile alongside the exercises.
+export {};
+
 //Library System Implementation
 // 1. Define the Book interface
 interface Book {
@@ -70,4 +73,4 @@ console.log(myLibrary.listBooks());
 console.log("\n--- Fetching Specific Book Details ---");
 const targetIsbn = "978-0201616224";
 const details = myLibrary.getBookDetails(targetIsbn);
-console.log(details); 
+console.log(details);
