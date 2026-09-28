@@ -1,0 +1,94 @@
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5efe5;
+    color: #20241d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: minmax(280px, 520px) 240px;
+    gap: 24px;
+    width: min(100%, 820px);
+    margin: auto;
+}
+
+.game-panel, .leaderboard-section {
+    background: #fffdf8;
+    border: 1px solid #d8d0c2;
+    box-shadow: 8px 8px 0 #d8cdbb;
+    padding: 32px;
+}
+
+.game-panel { text-align: center; }
+
+.eyebrow {
+    color: #b54b32;
+    font-size: 0.78rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.emoji-display {
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+    font-size: clamp(5rem, 15vw, 8rem);
+    margin: 20px 0;
+    line-height: 1.1;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.option-btn {
+    padding: 12px 18px;
+    font-size: 16px;
+    border: 2px solid #20241d;
+    background: #f7c948;
+    color: #20241d;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option-btn:hover {
+    background: #b54b32;
+    color: #fffdf8;
+}
+
+.option-btn:disabled { cursor: default; opacity: 0.55; }
+
+.feedback {
+    font-weight: bold;
+    min-height: 24px;
+    margin: 15px 0;
+}
+
+.leaderboard-section {
+    text-align: left;
+}
+
+.leaderboard-section h2 { margin-top: 0; }
+
+.leaderboard-list {
+    padding-left: 28px;
+    line-height: 1.9;
+}
+
+.score-line { font-size: 1.1rem; }
+.score-line strong { color: #b54b32; font-size: 1.5rem; }
+
+@media (max-width: 680px) {
+    .game-container { grid-template-columns: 1fr; }
+    .game-panel, .leaderboard-section { padding: 24px; }
+}

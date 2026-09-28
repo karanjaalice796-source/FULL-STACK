@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Guessing Game</title>
+    <link rel="stylesheet" href="dailychallenge-emoji guessing game.css" />
+    <script src="dailychallenge-emoji guessing game.js" defer></script>
+  </head>
+  <body>
+    <main class="game-container" aria-labelledby="game-title">
+      <section class="game-panel">
+        <p class="eyebrow">Rapid-fire challenge</p>
+        <h1 id="game-title">Emoji Guessing Game</h1>
+        <p class="instructions">Choose the name that matches the emoji.</p>
+        <div id="emoji-display" class="emoji-display" aria-label="Emoji clue">?</div>
+        <div class="score-line">Score <strong id="score">0</strong></div>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+        <div id="options-container" class="options-container" role="group" aria-label="Answer options"></div>
+      </section>
+      <aside class="leaderboard-section" aria-labelledby="leaderboard-title">
+        <h2 id="leaderboard-title">Leaderboard</h2>
+        <ol id="leaderboard-list" class="leaderboard-list"></ol>
+      </aside>
+    </main>
+  </body>
+</html>
