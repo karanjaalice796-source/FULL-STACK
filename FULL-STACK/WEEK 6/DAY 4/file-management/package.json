@@ -1,0 +1,10 @@
+{
+  "name": "file-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node.js file information and path exercise",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}

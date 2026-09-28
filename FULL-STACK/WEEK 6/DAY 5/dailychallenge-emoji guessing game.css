@@ -88,7 +88,63 @@ body {
 .score-line { font-size: 1.1rem; }
 .score-line strong { color: #b54b32; font-size: 1.5rem; }
 
+.restart-button,
+.score-form-row button {
+    border: 2px solid #20241d;
+    border-radius: 3px;
+    background: #20241d;
+    color: #fffdf8;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+    padding: 10px 14px;
+}
+
+.restart-button:hover,
+.score-form-row button:hover {
+    background: #b54b32;
+}
+
+.restart-button:focus-visible,
+.score-form-row button:focus-visible,
+.score-form-row input:focus-visible,
+.option-btn:focus-visible {
+    outline: 3px solid #277c72;
+    outline-offset: 3px;
+}
+
+.game-over-form:not([hidden]) {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.game-over-form label { font-weight: bold; }
+
+.score-form-row {
+    display: flex;
+    gap: 8px;
+}
+
+.score-form-row input {
+    min-width: 0;
+    flex: 1;
+    border: 1px solid #827968;
+    border-radius: 3px;
+    font: inherit;
+    padding: 10px;
+}
+
+.score-form-row button:disabled { cursor: wait; opacity: 0.65; }
+.feedback.success { color: #277c72; }
+.feedback.error { color: #b54b32; }
+
 @media (max-width: 680px) {
     .game-container { grid-template-columns: 1fr; }
     .game-panel, .leaderboard-section { padding: 24px; }
+}
+
+@media (max-width: 420px) {
+    .score-form-row { flex-direction: column; }
 }

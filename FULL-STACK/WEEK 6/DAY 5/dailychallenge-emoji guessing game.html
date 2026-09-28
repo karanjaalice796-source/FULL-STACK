@@ -15,8 +15,16 @@
         <p class="instructions">Choose the name that matches the emoji.</p>
         <div id="emoji-display" class="emoji-display" aria-label="Emoji clue">?</div>
         <div class="score-line">Score <strong id="score">0</strong></div>
+        <button id="restart-button" class="restart-button" type="button">New game</button>
         <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
         <div id="options-container" class="options-container" role="group" aria-label="Answer options"></div>
+        <form id="game-over-form" class="game-over-form" hidden>
+          <label for="player-name">Save your score to the leaderboard</label>
+          <div class="score-form-row">
+            <input id="player-name" name="playerName" type="text" maxlength="20" autocomplete="nickname" placeholder="Your name" required />
+            <button type="submit">Save score</button>
+          </div>
+        </form>
       </section>
       <aside class="leaderboard-section" aria-labelledby="leaderboard-title">
         <h2 id="leaderboard-title">Leaderboard</h2>

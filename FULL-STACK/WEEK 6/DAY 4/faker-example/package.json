@@ -1,0 +1,14 @@
+{
+  "name": "faker-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generate or interactively enter sample user data",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "prompt": "node app.js --prompt"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0"
+  }
+}

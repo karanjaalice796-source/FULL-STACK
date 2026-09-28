@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node \"FULL-STACK/WEEK 6/DAY 5/server.js\"",
+    "week7:day1:exercise1": "node \"FULL-STACK/WEEK 7/DAY 1/exercisexp.js\" exercise1",
+    "week7:day1:exercise2": "node \"FULL-STACK/WEEK 7/DAY 1/exercisexp.js\" exercise2",
+    "week7:day1:exercise3": "node \"FULL-STACK/WEEK 7/DAY 1/exercisexp.js\" exercise3",
+    "week7:day1:trivia": "node \"FULL-STACK/WEEK 7/DAY 1/dailychallenge-triviaquizgame.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +24,9 @@
   },
   "homepage": "https://github.com/karanjaalice796-source/FULL-STACK#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "axios": "^1.20.0",
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "date-fns-usage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Date arithmetic and formatting with date-fns",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0"
+  }
+}

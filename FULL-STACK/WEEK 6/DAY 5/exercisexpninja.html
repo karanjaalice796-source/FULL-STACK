@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173c35" />
+    <title>Node.js Quiz</title>
+    <link rel="stylesheet" href="exercisexpninja.css" />
+    <script src="quiz-game.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="/" aria-label="Node.js Quiz home"><span class="wordmark-mark">N</span> NODE / PLAY</a>
+        <span class="edition">WEEK 06 <span aria-hidden="true">/</span> DAY 05</span>
+      </header>
+
+      <section id="welcome-screen" class="welcome-screen" aria-labelledby="page-title">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> The fundamentals round</p>
+          <h1 id="page-title">Node.js<br /><span>Quiz</span></h1>
+          <p class="welcome-detail">Six questions on Node.js, Express, HTTP, and modules.</p>
+          <button id="start-button" class="button button-primary" type="button">
+            Start quiz <span aria-hidden="true">&#8594;</span>
+          </button>
+          <p id="start-error" class="message message-error" role="alert" hidden></p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <span class="art-index">01</span>
+          <span class="art-bracket art-bracket-open">{</span>
+          <span class="art-node">N</span>
+          <span class="art-bracket art-bracket-close">}</span>
+          <span class="art-caption">runtime / ready</span>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="quiz-layout" aria-label="Quiz" hidden>
+        <div class="quiz-main">
+          <div class="question-meta">
+            <span id="question-count">QUESTION 01 / 06</span>
+            <span class="topic-tag">NODE BASICS</span>
+          </div>
+          <progress id="quiz-progress" class="quiz-progress" max="6" value="1" aria-label="Quiz progress"></progress>
+          <h1 id="question-prompt" class="question-prompt"></h1>
+          <form id="answer-form">
+            <fieldset id="answer-options" class="answer-options">
+              <legend class="visually-hidden">Choose an answer</legend>
+            </fieldset>
+            <div class="answer-footer">
+              <p id="answer-feedback" class="answer-feedback" role="status" aria-live="polite"></p>
+              <button id="submit-button" class="button button-primary" type="submit" disabled>Check answer</button>
+              <button id="next-button" class="button button-primary" type="button" hidden>Next question <span aria-hidden="true">&#8594;</span></button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="score-rail" aria-label="Current score">
+          <p class="rail-label">CURRENT SCORE</p>
+          <p class="score-number"><span id="score-value">0</span><span class="score-total">/ 6</span></p>
+          <div class="rail-rule"></div>
+          <p class="rail-note">Keep your pace.<br />One question at a time.</p>
+          <span class="rail-symbol" aria-hidden="true">?</span>
+        </aside>
+      </section>
+
+      <section id="results-screen" class="results-screen" aria-labelledby="results-title" hidden>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Round complete</p>
+        <h1 id="results-title">That’s a wrap.</h1>
+        <p class="result-score"><span id="final-score">0</span><span> / 6</span></p>
+        <p id="result-message" class="result-message"></p>
+        <button id="restart-button" class="button button-primary" type="button">Play again <span aria-hidden="true">&#8594;</span></button>
+      </section>
+
+      <footer class="footer-line"><span>NODE.JS FUNDAMENTALS</span><span>NO TIMER <b aria-hidden="true">&#8226;</b> 6 QUESTIONS</span></footer>
+    </main>
+  </body>
+</html>
