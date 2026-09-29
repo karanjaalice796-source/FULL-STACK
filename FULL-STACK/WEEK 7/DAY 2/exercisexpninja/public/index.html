@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f3ed" />
+    <title>Quickfire | A little brain workout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="wordmark" href="/" aria-label="Quickfire home"><span class="brand-mark">Q</span> quickfire<span class="wordmark-period">.</span></a>
+        <span class="edition">THE DAILY MIX <span class="live-dot"></span></span>
+      </header>
+
+      <section class="quiz-layout" aria-live="polite">
+        <aside class="intro">
+          <p class="eyebrow"><span class="eyebrow-line"></span> GENERAL KNOWLEDGE / VOL. 01</p>
+          <h1>A little<br />brain <span>workout.</span></h1>
+          <p class="intro-copy">Five questions. One fresh start.<br />How much do you know?</p>
+          <div class="score-stamp" aria-label="Your current score">
+            <span class="stamp-label">YOUR SCORE</span>
+            <span class="stamp-value" id="score">00</span>
+            <span class="stamp-total" id="score-total">/ 05</span>
+          </div>
+          <div class="side-note"><span class="side-note-star">*</span> TRUST YOUR FIRST INSTINCT</div>
+        </aside>
+
+        <section class="quiz-panel" aria-label="Quiz">
+          <div class="quiz-topline">
+            <span id="question-count">LOADING QUIZ</span>
+            <span class="progress-label" id="progress-label">0% COMPLETE</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="progress-fill" id="progress-fill"></span>
+          </div>
+
+          <div id="quiz-content">
+            <p class="question-kicker">QUESTION <span id="question-number">01</span></p>
+            <h2 id="question-text">Getting your questions...</h2>
+            <form id="answer-form">
+              <fieldset class="options-list">
+                <legend class="visually-hidden">Choose one answer</legend>
+                <div id="options"></div>
+              </fieldset>
+              <div class="feedback" id="feedback" role="status" aria-live="assertive" hidden></div>
+              <div class="form-footer">
+                <span class="select-hint">SELECT ONE ANSWER</span>
+                <button class="submit-button" id="submit-button" type="submit">Check answer <span aria-hidden="true">↗</span></button>
+              </div>
+            </form>
+          </div>
+          <div id="result-content" hidden>
+            <p class="question-kicker">THAT'S A WRAP</p>
+            <h2 id="result-heading">Nice work.</h2>
+            <p class="result-copy" id="result-copy"></p>
+            <button class="submit-button replay-button" id="replay-button" type="button">Play again <span aria-hidden="true">↻</span></button>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer"><span>QUICKFIRE QUIZ CLUB</span><span>MADE FOR CURIOUS MINDS <span class="footer-spark">✳</span></span></footer>
+    </main>
+  </body>
+</html>

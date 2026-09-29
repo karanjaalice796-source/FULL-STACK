@@ -1,0 +1,4 @@
+node_modules/
+quiz.sqlite3
+quiz.sqlite3-shm
+quiz.sqlite3-wal

@@ -1,0 +1,16 @@
+{
+  "name": "quiz-game",
+  "version": "1.0.0",
+  "description": "A database-backed multiple-choice quiz built with Express and Knex",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "knex": "^3.3.0",
+    "sqlite3": "^5.1.7"
+  }
+}
