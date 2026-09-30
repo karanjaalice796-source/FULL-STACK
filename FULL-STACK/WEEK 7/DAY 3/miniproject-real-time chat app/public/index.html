@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f2ea">
+  <title>Commonroom | Live chat</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/client.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="entry-screen" id="entry-screen" aria-labelledby="entry-title">
+      <div class="entry-copy">
+        <a class="wordmark" href="/" aria-label="Commonroom home"><span class="brand-mark">c</span> commonroom</a>
+        <p class="eyebrow">A little room to talk</p>
+        <h1 id="entry-title">Good conversations<br>start somewhere.</h1>
+        <p class="entry-note">Pick a name. Find your room.</p>
+        <div class="entry-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <form class="join-card" id="join-form">
+        <div class="card-heading">
+          <span class="online-dot"></span>
+          <span>ROOMS ARE OPEN</span>
+        </div>
+        <h2>Join the conversation</h2>
+        <label for="username">Your name</label>
+        <input id="username" name="username" maxlength="24" placeholder="e.g. Alex" autocomplete="nickname" required>
+        <label for="room">Room</label>
+        <input id="room" name="room" maxlength="32" placeholder="e.g. general" value="lobby" required>
+        <div class="room-picks" aria-label="Popular rooms">
+          <button type="button" class="room-pick is-selected" data-room="lobby"># lobby</button>
+          <button type="button" class="room-pick" data-room="design"># design</button>
+          <button type="button" class="room-pick" data-room="music"># music</button>
+        </div>
+        <button class="primary-button" id="join-button" type="submit" disabled>Enter room <span aria-hidden="true">↗</span></button>
+        <p class="form-error" id="join-error" role="alert"></p>
+      </form>
+      <footer class="entry-footer">Live rooms, shared moments <span>•</span> Built for the here and now</footer>
+    </section>
+
+    <section class="chat-screen" id="chat-screen" hidden>
+      <aside class="sidebar">
+        <a class="wordmark sidebar-brand" href="/" aria-label="Commonroom home"><span class="brand-mark">c</span> commonroom</a>
+        <div class="sidebar-label">YOUR SPACE</div>
+        <div class="current-room"><span class="hash">#</span><span id="sidebar-room">lobby</span><span class="room-live-dot"></span></div>
+        <div class="sidebar-label room-label">FIND A ROOM</div>
+        <button class="sidebar-room" type="button" data-room="lobby"><span>#</span> lobby</button>
+        <button class="sidebar-room" type="button" data-room="design"><span>#</span> design</button>
+        <button class="sidebar-room" type="button" data-room="music"><span>#</span> music</button>
+        <div class="sidebar-bottom">
+          <div class="profile-chip"><span class="avatar self-avatar" id="self-avatar">A</span><span class="profile-name" id="profile-name">Alex</span><span class="online-dot"></span></div>
+          <button class="leave-button" id="leave-button" type="button" aria-label="Leave room">Leave room <span aria-hidden="true">↗</span></button>
+        </div>
+      </aside>
+
+      <div class="conversation">
+        <header class="room-header">
+          <div>
+            <p class="header-kicker">YOU'RE HANGING OUT IN</p>
+            <h1><span class="hash">#</span><span id="header-room">lobby</span></h1>
+          </div>
+          <div class="header-actions">
+            <span class="connection-state" id="connection-state"><i></i> Connected</span>
+            <button class="notification-button" id="notification-button" type="button" title="Enable desktop notifications">Enable alerts <span aria-hidden="true">♢</span></button>
+          </div>
+        </header>
+
+        <div class="conversation-body">
+          <section class="message-column" aria-label="Room conversation">
+            <div class="room-welcome" id="room-welcome">
+              <span class="welcome-symbol">#</span>
+              <div><h2 id="welcome-title">Welcome to #lobby</h2><p>This is the beginning of something good.</p></div>
+            </div>
+            <div class="messages" id="messages" aria-live="polite" aria-relevant="additions"></div>
+            <form class="composer" id="message-form">
+              <label class="visually-hidden" for="message-input">Write a message</label>
+              <textarea id="message-input" name="text" rows="1" maxlength="2000" placeholder="Message #lobby" required></textarea>
+              <div class="composer-footer"><span class="composer-hint">Be kind. Say something good.</span><button type="submit" id="send-button" disabled>Send <span aria-hidden="true">↗</span></button></div>
+            </form>
+          </section>
+
+          <aside class="people-panel" aria-label="People in this room">
+            <div class="people-heading"><span>IN THIS ROOM</span><span class="people-count" id="people-count">0</span></div>
+            <div class="people-list" id="people-list"></div>
+            <div class="people-note"><span class="online-dot"></span> All together, right now.</div>
+          </aside>
+        </div>
+      </div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>

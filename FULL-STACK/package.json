@@ -1,0 +1,40 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node \"FULL-STACK/WEEK 6/DAY 5/server.js\"",
+    "task-api": "node \"FULL-STACK/WEEK 7/DAY 3/miniproject-Task Management API #1/server.js\"",
+    "user-api": "node \"FULL-STACK/WEEK 7/DAY 3/dailychallenge-task API #2/server.js\"",
+    "chat-app": "node \"FULL-STACK/WEEK 7/DAY 3/miniproject-real-time chat app/server.js\"",
+    "strategy-game": "node \"FULL-STACK/WEEK 7/DAY 3/miniproject-multiplayer strategy/server.js\"",
+    "notes": "node \"FULL-STACK/WEEK 7/DAY 3/miniproject-notes app/app.js\"",
+    "week7:day1:exercise1": "node \"FULL-STACK/WEEK 7/DAY 1/exercisexp.js\" exercise1",
+    "week7:day1:exercise2": "node \"FULL-STACK/WEEK 7/DAY 1/exercisexp.js\" exercise2",
+    "week7:day1:exercise3": "node \"FULL-STACK/WEEK 7/DAY 1/exercisexp.js\" exercise3",
+    "week7:day1:trivia": "node \"FULL-STACK/WEEK 7/DAY 1/dailychallenge-triviaquizgame.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karanjaalice796-source/FULL-STACK.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/karanjaalice796-source/FULL-STACK/issues"
+  },
+  "homepage": "https://github.com/karanjaalice796-source/FULL-STACK#readme",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "lodash": "^4.18.1",
+    "socket.io": "^4.8.4",
+    "yargs": "^18.2.0"
+  }
+}

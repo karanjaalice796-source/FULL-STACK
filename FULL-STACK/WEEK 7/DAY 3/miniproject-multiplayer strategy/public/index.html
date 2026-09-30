@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1f4ed">
+  <title>Cornerstone | Strategy game</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/client.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="auth-screen" id="auth-screen">
+      <div class="intro">
+        <a class="brand" href="/"><span class="brand-mark">C</span> CORNERSTONE</a>
+        <p class="overline">A tactical game for two</p>
+        <h1>Every move<br>makes a mark.</h1>
+        <p class="intro-copy">Outthink your opponent. Find the opening. Take their corner.</p>
+        <div class="mini-board" aria-hidden="true"><i class="base-a">A</i><i class="stone stone-one"></i><i class="stone stone-two"></i><i class="base-b">B</i></div>
+      </div>
+      <section class="auth-panel" aria-labelledby="auth-heading">
+        <div class="panel-topline"><span class="signal"></span> MULTIPLAYER ONLINE</div>
+        <h2 id="auth-heading">Sign in to play</h2>
+        <div class="auth-tabs" role="tablist" aria-label="Account action">
+          <button class="auth-tab is-active" id="login-tab" type="button" role="tab" aria-selected="true">Log in</button>
+          <button class="auth-tab" id="register-tab" type="button" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <form id="auth-form">
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" minlength="3" maxlength="20" required>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required>
+          <button class="button button-primary" id="auth-submit" type="submit">Log in <span>↗</span></button>
+        </form>
+        <p class="feedback" id="auth-feedback" role="status" aria-live="polite"></p>
+      </section>
+      <footer class="auth-footer">10 × 10 board <span>•</span> One step per turn <span>•</span> Two corners at stake</footer>
+    </section>
+
+    <section class="lobby-screen" id="lobby-screen" hidden>
+      <header class="topbar"><a class="brand" href="/"><span class="brand-mark">C</span> CORNERSTONE</a><div class="account"><span class="account-dot"></span><span id="account-name"></span><button id="logout-button" type="button">Log out</button></div></header>
+      <div class="lobby-content">
+        <div class="lobby-title"><div><p class="overline">THE BATTLEFIELD IS READY</p><h1>Choose your next move.</h1></div><span class="board-stamp">FIELD<br>NO. 010</span></div>
+        <div class="lobby-columns">
+          <section class="lobby-section create-section"><span class="section-index">01 / HOST</span><h2>Start a new game</h2><p>Claim one corner. Invite a rival to the opposite end.</p><button class="button button-primary" id="create-game" type="button">Create game <span>↗</span></button><p class="feedback" id="create-feedback" role="status"></p></section>
+          <section class="lobby-section join-section"><span class="section-index">02 / JOIN</span><h2>Enter a game code</h2><p>Join a player already waiting on the grid.</p><form id="join-form"><label class="visually-hidden" for="game-code">Game code</label><input id="game-code" name="code" placeholder="e.g. 4F8A2C" maxlength="6" required><button class="button button-secondary" type="submit">Join game <span>→</span></button></form><p class="feedback" id="join-feedback" role="status"></p></section>
+        </div>
+        <div class="rules-strip"><span>01 <b>MOVE</b> one square, orthogonally</span><span>02 <b>WATCH</b> obstacles and the other player</span><span>03 <b>CAPTURE</b> a base or attack from beside it</span></div>
+      </div>
+    </section>
+
+    <section class="game-screen" id="game-screen" hidden>
+      <header class="topbar"><a class="brand" href="/"><span class="brand-mark">C</span> CORNERSTONE</a><div class="game-meta"><span>GAME CODE</span><strong id="active-game-code"></strong><button id="copy-code" type="button" title="Copy game code">Copy</button></div><div class="account"><span class="account-dot"></span><span id="game-account-name"></span><button id="game-lobby-button" type="button">Exit game</button></div></header>
+      <div class="game-layout">
+        <section class="board-section">
+          <div class="board-heading"><div><p class="overline" id="game-status">WAITING FOR PLAYER</p><h1 id="game-title">The field</h1></div><div class="turn-indicator" id="turn-indicator"><span></span> Waiting</div></div>
+          <div class="board-wrap"><div class="axis axis-top" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span></div><div class="board-row"><div class="axis axis-side" aria-hidden="true"><span>10</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div><div class="board" id="board" role="grid" aria-label="10 by 10 game board"></div></div></div>
+          <div class="legend"><span><i class="legend-self"></i> You</span><span><i class="legend-opponent"></i> Opponent</span><span><i class="legend-base"></i> Base</span><span><i class="legend-obstacle"></i> Obstacle</span></div>
+        </section>
+        <aside class="game-sidebar">
+          <div class="match-card"><span class="section-index">THE MATCH</span><div class="player-card" id="player-card-one"></div><div class="versus">VS</div><div class="player-card" id="player-card-two"></div></div>
+          <div class="move-card"><span class="section-index">YOUR ORDERS</span><h2 id="orders-title">Waiting for opponent</h2><p id="orders-copy">Your opponent can join with the game code.</p><div class="move-grid" aria-label="Move controls"><button data-direction="up" type="button" aria-label="Move up">↑</button><button data-direction="left" type="button" aria-label="Move left">←</button><button data-direction="down" type="button" aria-label="Move down">↓</button><button data-direction="right" type="button" aria-label="Move right">→</button></div><button class="button button-attack" id="attack-button" type="button" disabled>Attack enemy base</button><p class="feedback" id="game-feedback" role="status" aria-live="polite"></p></div>
+          <button class="button button-quiet" id="return-lobby" type="button">Back to lobby</button>
+        </aside>
+      </div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>
