@@ -1,0 +1,189 @@
+.gold-page {
+  --ink: #1e302c;
+  --paper: #f3f2ec;
+  --orange: #c45336;
+  min-height: 100vh;
+  padding-bottom: 56px;
+  background:
+    radial-gradient(ellipse at 96% 8%, rgb(221 202 141 / 25%), transparent 28%),
+    var(--paper);
+  color: var(--ink);
+}
+
+.gold-header {
+  padding: 16px 0;
+  border-bottom: 1px solid #d8d9d0;
+}
+
+.gold-brand {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-decoration: none;
+}
+
+.header-label,
+.section-kicker {
+  color: #718077;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.gold-content {
+  padding-top: 46px;
+}
+
+.section-heading {
+  margin-bottom: 24px;
+}
+
+.section-kicker {
+  margin: 0 0 10px;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+.section-heading h1,
+.section-heading h2 {
+  max-width: 680px;
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+}
+
+.section-heading h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.08;
+}
+
+.section-heading h2 {
+  font-size: 36px;
+}
+
+.celebrity-grid {
+  align-items: stretch;
+}
+
+.celebrity-card {
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #dedfd7;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgb(30 48 44 / 7%);
+}
+
+.celebrity-image {
+  height: 240px;
+  object-fit: cover;
+  object-position: center 35%;
+  background: #d9ddd6;
+}
+
+.celebrity-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.celebrity-card .card-title {
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 26px;
+}
+
+.celebrity-card .card-text {
+  flex: 1;
+  margin-bottom: 20px;
+  color: #57645e;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.celebrity-card .btn-primary {
+  border-color: var(--ink);
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.celebrity-card .btn-primary:hover {
+  border-color: var(--orange);
+  background: var(--orange);
+}
+
+.planet-section {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid #d8d9d0;
+}
+
+.planet-heading {
+  margin-bottom: 18px;
+}
+
+.planet-list {
+  border-radius: 0;
+}
+
+.planet-list .list-group-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 64px;
+  padding: 14px 18px;
+  border-color: #d8d9d0;
+  background: rgb(255 255 255 / 54%);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 17px;
+}
+
+.planet-index {
+  color: var(--orange);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 991px) {
+  .planet-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .gold-content {
+    padding-top: 32px;
+  }
+
+  .header-label {
+    font-size: 9px;
+  }
+
+  .celebrity-image {
+    height: 210px;
+  }
+
+  .celebrity-card .card-body {
+    padding: 20px;
+  }
+
+  .planet-section {
+    margin-top: 40px;
+  }
+
+  .planet-list {
+    grid-template-columns: 1fr;
+  }
+}

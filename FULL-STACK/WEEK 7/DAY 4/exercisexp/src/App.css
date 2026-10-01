@@ -1,0 +1,42 @@
+.lesson {
+  width: min(100% - 40px, 820px);
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+.lesson-header {
+  padding-bottom: 24px;
+  border-bottom: 2px solid #263333;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #526e65;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.lesson-header h1 {
+  margin: 0;
+  font-size: clamp(36px, 8vw, 58px);
+}
+
+.exercise {
+  padding: 28px 0;
+  border-bottom: 1px solid #cbd2c9;
+}
+
+.exercise h2 {
+  margin: 0 0 16px;
+  color: #263333;
+  font-size: 24px;
+}
+
+.exercise > h1 {
+  margin: 14px 0;
+}
+
+.exercise h3 {
+  margin: 4px 0;
+}

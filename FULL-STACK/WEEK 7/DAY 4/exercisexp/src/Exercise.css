@@ -1,0 +1,41 @@
+.tag-exercise {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+}
+
+.tag-exercise .para {
+  width: 100%;
+  margin: 0;
+  padding: 40px;
+  background-color: #282c34;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.tag-exercise form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag-exercise input {
+  min-width: 0;
+  padding: 6px 8px;
+}
+
+.tag-exercise button {
+  padding: 6px 10px;
+  border: 0;
+  background: #b63e2d;
+  color: white;
+  cursor: pointer;
+}
+
+.tag-exercise img {
+  display: block;
+  width: min(100%, 300px);
+  height: auto;
+}
