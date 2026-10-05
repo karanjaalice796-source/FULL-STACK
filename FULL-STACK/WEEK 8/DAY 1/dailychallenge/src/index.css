@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Kalam:wght@300;400;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap');
+
+:root {
+  font-family: 'Kalam', 'Segoe Print', cursive;
+  color: #253b4a;
+  background: #28363d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #253b4a;
+  --ink-soft: #526a72;
+  --paper: #fbf5e7;
+  --paper-dark: #eee3ce;
+  --blue: #587d90;
+  --red: #b54e42;
+  --yellow: #e1ba64;
+  --green: #617c68;
+  --mono: 'DM Mono', monospace;
+  --hand: 'Kalam', 'Segoe Print', cursive;
+  --serif: 'Playfair Display', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; min-height: 100%; }
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button, input, select { font: inherit; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgb(181 78 66 / 55%); outline-offset: 3px; }
+::selection { color: var(--paper); background: var(--blue); }
