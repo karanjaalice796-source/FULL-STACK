@@ -1,0 +1,54 @@
+<%- include('../partials/head', { title: 'Search the facts — Fact File' }) %>
+<main id="top" class="page-shell">
+  <%- include('../partials/header') %>
+
+  <section class="search-hero">
+    <p class="eyebrow"><span></span> YOUR CURIOSITY, YOUR WAY</p>
+    <h1>Find a <em>fact.</em></h1>
+    <p>Search the feed by a title you remember, or browse by subject.</p>
+  </section>
+
+  <section class="search-tools" aria-label="Search facts">
+    <form class="search-card" action="/search/title" method="POST">
+      <label for="title">01 / SEARCH BY TITLE</label>
+      <p>Have a phrase in mind? We’ll find the matching story.</p>
+      <input id="title" name="title" type="search" list="feed-titles" value="<%= selectedTitle %>" placeholder="Type a word or title…" autocomplete="off">
+      <datalist id="feed-titles">
+        <% titles.forEach((title) => { %>
+          <option value="<%= title %>"></option>
+        <% }) %>
+      </datalist>
+      <button type="submit">SEARCH TITLES <span>↗</span></button>
+    </form>
+
+    <form class="search-card category-card" action="/search/category" method="POST">
+      <label for="category">02 / BROWSE BY CATEGORY</label>
+      <p>Choose a subject and see what turns up.</p>
+      <select id="category" name="category">
+        <option value="">Choose a category…</option>
+        <% categories.forEach((category) => { %>
+          <option value="<%= category %>" <%= selectedCategory.toLowerCase() === category.toLowerCase() ? 'selected' : '' %>><%= category %></option>
+        <% }) %>
+      </select>
+      <button type="submit">BROWSE CATEGORY <span>↗</span></button>
+    </form>
+  </section>
+
+  <% if (error) { %>
+    <div class="search-feedback" role="status"><%= error %></div>
+  <% } %>
+
+  <% if (selectedTitle || selectedCategory) { %>
+    <section class="feed-section search-results" aria-labelledby="results-heading">
+      <header class="feed-heading">
+        <div>
+          <p class="eyebrow"><span></span> HERE’S WHAT WE FOUND</p>
+          <h2 id="results-heading">Search <em>results</em></h2>
+        </div>
+        <a class="clear-link" href="/search">CLEAR SEARCH ×</a>
+      </header>
+      <%- include('../partials/posts', { posts, error: '', showEmpty: true }) %>
+    </section>
+  <% } %>
+
+  <%- include('../partials/footer') %>

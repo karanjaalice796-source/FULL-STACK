@@ -1,0 +1,37 @@
+<% if (error) { %>
+  <div class="feed-message" role="alert">
+    <span class="message-mark">!</span>
+    <div>
+      <strong>For a moment, the signal went quiet.</strong>
+      <p><%= error %></p>
+    </div>
+  </div>
+<% } else if (posts.length) { %>
+  <div class="post-grid">
+    <% posts.forEach((post, index) => { %>
+      <article class="fact-card">
+        <div class="fact-card-top">
+          <span>FACT&nbsp; <%= String(index + 1).padStart(2, '0') %></span>
+          <span><%= post.date %></span>
+        </div>
+        <h2><a href="<%= post.link %>" target="_blank" rel="noopener noreferrer"><%= post.title %></a></h2>
+        <p class="fact-content"><%= post.content %></p>
+        <div class="fact-card-bottom">
+          <span>BY <%= post.creator %></span>
+          <span class="fact-categories">
+            <% if (post.categories.length) { %>
+              <%= post.categories.join(' · ') %>
+            <% } else { %>
+              GENERAL
+            <% } %>
+          </span>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+<% } else if (showEmpty) { %>
+  <div class="empty-state">
+    <span>NO RESULTS / YET</span>
+    <p>Try another title or category. There are plenty more facts in the feed.</p>
+  </div>
+<% } %>

@@ -1,0 +1,33 @@
+<%- include('../partials/head', { title: 'The Fact File — Daily Discoveries' }) %>
+<main id="top" class="page-shell">
+  <%- include('../partials/header') %>
+
+  <section class="hero">
+    <p class="eyebrow"><span></span> A LITTLE KNOWLEDGE, FRESH FROM THE FEED</p>
+    <div class="hero-copy">
+      <div>
+        <h1>The world is<br />full of <em>oddities.</em></h1>
+        <p class="hero-description">A growing collection of true, curious things. Pulled from the Fact File RSS feed and brought here for your next small wonder.</p>
+      </div>
+      <div class="orbit-stamp" aria-label="RSS facts reader">
+        <span>READ</span><b>✳</b><span>WONDER</span>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <span>THE FACT FILE / RSS READER</span>
+      <a href="/search">FIND A PARTICULAR FACT <b>↗</b></a>
+    </div>
+  </section>
+
+  <section class="feed-section" aria-labelledby="feed-heading">
+    <header class="feed-heading">
+      <div>
+        <p class="eyebrow"><span></span> STRAIGHT FROM THE SOURCE</p>
+        <h2 id="feed-heading">Latest <em>discoveries</em></h2>
+      </div>
+      <span class="section-aside">THE FACT FILE <i>·</i> LIVE FEED</span>
+    </header>
+    <%- include('../partials/posts', { posts, error, showEmpty: false }) %>
+  </section>
+
+  <%- include('../partials/footer') %>
