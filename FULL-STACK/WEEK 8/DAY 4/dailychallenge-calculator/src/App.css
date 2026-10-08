@@ -1,0 +1,254 @@
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  width: min(980px, calc(100% - 56px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #30312c;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  text-decoration: none;
+}
+
+.brand-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #30312c;
+  color: #d5e8a2;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+}
+
+.brand-light {
+  color: #92938c;
+  font-weight: 500;
+}
+
+.topbar-label,
+.footer {
+  color: #92938c;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.calculator-section {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 52px 16px 60px;
+}
+
+.calculator {
+  width: min(100%, 360px);
+  padding: 15px;
+  border: 1px solid #343530;
+  border-radius: 25px;
+  background: #252622;
+  box-shadow:
+    0 32px 70px rgb(37 38 34 / 18%),
+    0 8px 20px rgb(37 38 34 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 8%);
+}
+
+.calculator-top {
+  min-height: 169px;
+  display: flex;
+  align-items: end;
+  padding: 20px 13px 25px;
+}
+
+.display {
+  width: 100%;
+  text-align: right;
+}
+
+.expression {
+  min-height: 18px;
+  margin: 0 0 6px;
+  color: #9d9e94;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.display-value {
+  display: block;
+  overflow: hidden;
+  color: #f6f6f2;
+  font-family: Manrope, 'DM Sans', sans-serif;
+  font-size: clamp(44px, 12vw, 62px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+  letter-spacing: -3px;
+  line-height: 1.13;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.key {
+  min-width: 0;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
+  transition: filter 120ms ease, transform 120ms ease, background 120ms ease;
+  user-select: none;
+}
+
+.key:hover {
+  filter: brightness(1.16);
+}
+
+.key:active {
+  transform: scale(0.94);
+  filter: brightness(1.35);
+}
+
+.key.number {
+  background: #41423e;
+  color: #f7f7f4;
+}
+
+.key.utility {
+  background: #a5a69d;
+  color: #252622;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.key.operator {
+  background: #d4e79b;
+  color: #303625;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.key.operator.selected {
+  background: #f5f7ee;
+  color: #667744;
+}
+
+.key.equals {
+  background: #9fc657;
+  color: #202517;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.key.zero {
+  grid-column: span 1;
+}
+
+.keyboard-hint {
+  margin: 17px 0 4px;
+  color: #8e9086;
+  font-size: 9px;
+  text-align: center;
+}
+
+.footer {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e5e5e0;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+  .page {
+    width: calc(100% - 32px);
+  }
+
+  .topbar {
+    height: 68px;
+  }
+
+  .topbar-label {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .calculator-section {
+    padding: 34px 0 42px;
+  }
+
+  .calculator {
+    width: min(100%, 340px);
+    padding: 13px;
+    border-radius: 23px;
+  }
+
+  .calculator-top {
+    min-height: 150px;
+    padding: 17px 10px 21px;
+  }
+
+  .keypad {
+    gap: 9px;
+  }
+
+  .key {
+    font-size: 19px;
+  }
+
+  .key.operator,
+  .key.equals {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 360px) {
+  .calculator {
+    padding: 10px;
+  }
+
+  .keypad {
+    gap: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
