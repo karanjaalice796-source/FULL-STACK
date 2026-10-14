@@ -1,0 +1,286 @@
+#root { min-height: 100vh; }
+
+.app-shell {
+  width: min(1180px, calc(100% - 64px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4eae7;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  text-decoration: none;
+}
+
+.brand-symbol, .member-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-style: italic;
+}
+
+.header-note, .member-badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #63a88e;
+  box-shadow: 0 0 0 4px #e5f0eb;
+}
+
+.auth-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  align-items: center;
+  gap: 90px;
+  padding: 48px 4.5% 60px;
+}
+
+.welcome-copy { position: relative; align-self: center; }
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.welcome-copy h1, .member-card h1 {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(54px, 6vw, 78px);
+  font-weight: 500;
+  letter-spacing: -2.5px;
+  line-height: 1.08;
+}
+
+.welcome-copy h1 em, .member-card h1 em { color: var(--accent); font-weight: 500; }
+.welcome-description {
+  max-width: 370px;
+  margin: 23px 0 0;
+  color: #73817e;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.welcome-decoration {
+  position: relative;
+  width: 198px;
+  height: 140px;
+  margin: 26px 0 0 16px;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid #cfdfd8;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-28deg);
+}
+
+.orbit-one { width: 188px; height: 67px; }
+.orbit-two { width: 155px; height: 94px; transform: translate(-50%, -50%) rotate(34deg); }
+.orbit-three { width: 126px; height: 126px; }
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #dcebe5;
+  color: var(--accent);
+  font-size: 24px;
+  transform: translate(-50%, -50%);
+}
+
+.welcome-caption { margin: 0; color: #9aa5a1; font-size: 11px; }
+.form-card, .member-card {
+  border: 1px solid #e8edeb;
+  border-radius: 24px;
+  background: var(--paper);
+  box-shadow: 0 22px 65px #253b3310;
+}
+
+.form-card { padding: 37px 39px 31px; }
+.form-heading { text-align: center; }
+.form-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 19px;
+  border: 1px solid #e0ebe6;
+  border-radius: 14px;
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.form-heading .eyebrow { margin-bottom: 9px; font-size: 9px; }
+.form-heading h2 {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.7px;
+}
+.form-heading > p:last-child { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+.login-form { display: flex; flex-direction: column; margin-top: 28px; }
+.login-form label, .password-label { color: #394a46; font-size: 11px; font-weight: 600; }
+.login-form > input {
+  width: 100%;
+  height: 46px;
+  margin: 8px 0 19px;
+  padding: 0 13px;
+  border: 1px solid #e4eae7;
+  border-radius: 9px;
+  background: #fcfdfd;
+  color: var(--ink);
+  font-size: 12px;
+}
+.login-form > input::placeholder { color: #b1bbb8; }
+.password-label { display: flex; align-items: center; justify-content: space-between; }
+.password-label a { color: var(--accent); font-size: 10px; text-decoration: none; }
+.login-form > input#password { margin-bottom: 21px; }
+
+.submit-button, .logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 160ms ease, transform 160ms ease;
+}
+.submit-button:hover, .logout-button:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.submit-button span, .logout-button span { font-size: 16px; }
+.demo-note {
+  margin: 19px 0 0;
+  color: #96a19e;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.site-footer {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e4eae7;
+  color: #9aa5a1;
+  font-size: 10px;
+}
+
+.member-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 54px 20px;
+}
+
+.member-card { width: min(100%, 590px); padding: 36px 42px 38px; }
+.member-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 52px; }
+.member-mark { width: 40px; height: 40px; border-radius: 13px; font-size: 24px; }
+.member-card .eyebrow { margin-bottom: 15px; }
+.member-card h1 { font-size: 53px; }
+.member-intro { max-width: 430px; margin: 19px 0 27px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 21px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfcfc;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  background: #e4f0eb;
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+}
+.profile-details { display: flex; flex: 1; flex-direction: column; gap: 4px; min-width: 0; }
+.profile-details strong { font-size: 12px; }
+.profile-details span { overflow: hidden; color: var(--muted); font-size: 10px; text-overflow: ellipsis; }
+.profile-check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e4f0eb;
+  color: var(--accent);
+  font-size: 12px;
+}
+.logout-button { width: 100%; }
+.member-footnote { margin: 18px 0 0; color: #9aa5a1; font-size: 10px; text-align: center; }
+
+@media (max-width: 850px) {
+  .auth-layout { grid-template-columns: 1fr 390px; gap: 40px; padding-right: 0; padding-left: 0; }
+  .welcome-copy h1 { font-size: 58px; }
+}
+
+@media (max-width: 680px) {
+  .app-shell { width: min(100% - 36px, 480px); }
+  .site-header { min-height: 76px; }
+  .header-note { max-width: 150px; font-size: 10px; text-align: right; }
+  .auth-layout { grid-template-columns: 1fr; gap: 30px; padding: 42px 0; }
+  .welcome-copy { text-align: center; }
+  .welcome-copy .eyebrow { margin-bottom: 12px; }
+  .welcome-copy h1 { font-size: 52px; }
+  .welcome-description { margin: 13px auto 0; font-size: 13px; }
+  .welcome-decoration, .welcome-caption { display: none; }
+  .form-card { padding: 30px 25px 26px; }
+  .site-footer { gap: 12px; font-size: 9px; }
+  .member-card { padding: 27px 24px; }
+  .member-card-top { margin-bottom: 39px; }
+  .member-card h1 { font-size: 43px; }
+}
