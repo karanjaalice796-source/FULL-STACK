@@ -31,7 +31,7 @@ function BookCard({ book, onAdd }) {
         type="button"
         onClick={() => onAdd(book)}
         disabled={!book.available}
-        aria-label={book.available ? `Add ${book.title} to basket` : `${book.title} is sold out`}
+        aria-label={book.available ? `Add ${book.title} to basket` : `${book.title} is out of stock`}
       >
         <div className={`book-cover ${coverFailed ? 'cover-fallback' : ''}`}>
           {!coverFailed && (
@@ -50,7 +50,7 @@ function BookCard({ book, onAdd }) {
             </>
           )}
         </div>
-        <span className="quick-add">{book.available ? 'Quick add' : 'Sold out'} <span aria-hidden="true">{book.available ? '+' : '—'}</span></span>
+        <span className="quick-add">{book.available ? 'Quick add' : 'Out of stock'} <span aria-hidden="true">{book.available ? '+' : '—'}</span></span>
       </button>
       <div className="book-details">
         <span className="genre-label">{book.genre}</span>
@@ -64,7 +64,7 @@ function BookCard({ book, onAdd }) {
             disabled={!book.available}
             onClick={() => onAdd(book)}
           >
-            {book.available ? 'Add to basket' : 'Sold out'}
+            {book.available ? 'Add to basket' : 'Out of stock'}
           </button>
         </div>
         <span className="visually-hidden">ISBN {book.isbn} · {book.year} edition</span>

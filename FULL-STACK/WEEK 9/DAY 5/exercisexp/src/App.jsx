@@ -210,7 +210,7 @@ export default function App() {
           <span className="filter-caption">Find something you’ll love.</span>
         </div>
         <BookList genre={genre} search={search} onAdd={addToBasket} />
-        <p className="price-disclaimer">Sample prices shown in KSh. Final prices and delivery can be set up for your shop.</p>
+        <p className="price-disclaimer">Sample prices and delivery terms in KSh are placeholders for this shop preview.</p>
       </section>
 
       <section className="about-strip" id="about">
