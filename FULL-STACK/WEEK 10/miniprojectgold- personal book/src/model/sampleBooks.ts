@@ -1,0 +1,73 @@
+import type { Book } from './Book';
+
+const daysAgo = (days: number) =>
+  new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
+
+export const sampleBooks: Book[] = [
+  {
+    id: 'sample-river-red-with-blood-2026',
+    title: 'A River Red with Blood',
+    author: 'John Connolly',
+    category: 'Mystery',
+    status: 'to-read',
+    rating: 0,
+    addedAt: daysAgo(0),
+    coverIsbn: '9781668083987',
+    note: 'A new Charlie Parker mystery from John Connolly.',
+  },
+  {
+    id: 'sample-how-to-kill-a-guy-in-ten-dates-2026',
+    title: 'How to Kill a Guy in Ten Dates',
+    author: 'Shailee Thompson',
+    category: 'Mystery',
+    status: 'to-read',
+    rating: 0,
+    addedAt: daysAgo(1),
+    coverIsbn: '9781398551510',
+    note: 'A 2026 mystery with a dating-life premise and a sharp title.',
+  },
+  {
+    id: 'sample-onyx-storm-2025',
+    title: 'Onyx Storm',
+    author: 'Rebecca Yarros',
+    category: 'Fantasy',
+    status: 'reading',
+    rating: 0,
+    addedAt: daysAgo(3),
+    coverIsbn: '9781649374189',
+    note: 'The third Empyrean novel brings Violet back to a world of dragons, difficult choices, and a growing rebellion.',
+  },
+  {
+    id: 'sample-great-big-beautiful-life-2025',
+    title: 'Great Big Beautiful Life',
+    author: 'Emily Henry',
+    category: 'Romance',
+    status: 'to-read',
+    rating: 0,
+    addedAt: daysAgo(4),
+    coverIsbn: '9780593441299',
+    note: 'Two writers compete to tell the story of a famously private heiress on a small island in Georgia.',
+  },
+  {
+    id: 'sample-atmosphere-2025',
+    title: 'Atmosphere',
+    author: 'Taylor Jenkins Reid',
+    category: 'Historical fiction',
+    status: 'to-read',
+    rating: 0,
+    addedAt: daysAgo(5),
+    coverIsbn: '9780593158715',
+    note: 'A woman joins NASA’s space shuttle program in the 1980s and finds her life changing in unexpected ways.',
+  },
+  {
+    id: 'sample-emperor-of-gladness-2025',
+    title: 'The Emperor of Gladness',
+    author: 'Ocean Vuong',
+    category: 'Literary fiction',
+    status: 'to-read',
+    rating: 0,
+    addedAt: daysAgo(6),
+    coverIsbn: '9780593831878',
+    note: 'A young man and an elderly woman form an unlikely bond in a Connecticut town.',
+  },
+];
