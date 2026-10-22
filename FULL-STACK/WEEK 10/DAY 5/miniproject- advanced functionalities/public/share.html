@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Story Share</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f6ff;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .card {
+        width: min(680px, 90vw);
+        background: white;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 15px 30px rgba(50, 50, 80, 0.12);
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+      }
+      a, button {
+        text-decoration: none;
+        background: #5246d9;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 16px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .muted { color: #687385; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 id="story-title">Shared Story</h1>
+      <div id="story-meta" class="muted"></div>
+      <pre id="story-content" style="white-space: pre-wrap; margin-top: 20px;"></pre>
+      <div class="actions">
+        <a id="x-share" target="_blank" rel="noreferrer">Share on X</a>
+        <a id="facebook-share" target="_blank" rel="noreferrer">Share on Facebook</a>
+      </div>
+    </div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const storyId = params.get('storyId');
+      fetch(`/api/stories/${storyId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const story = data.story;
+          document.getElementById('story-title').textContent = story.title;
+          document.getElementById('story-meta').textContent = `By ${story.author?.username || 'Unknown'} • ${new Date(story.createdAt).toLocaleString()}`;
+          document.getElementById('story-content').textContent = story.content;
+          const url = encodeURIComponent(window.location.href);
+          document.getElementById('x-share').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this story: ' + story.title)}&url=${url}`;
+          document.getElementById('facebook-share').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        })
+        .catch(() => {
+          document.getElementById('story-title').textContent = 'Unable to load story';
+        });
+    </script>
+  </body>
+</html>

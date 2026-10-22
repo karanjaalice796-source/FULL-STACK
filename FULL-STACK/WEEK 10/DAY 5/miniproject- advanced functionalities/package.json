@@ -1,0 +1,25 @@
+{
+  "name": "advanced-functionalities-story-app",
+  "version": "1.0.0",
+  "description": "Story collaboration app with comments, versions, profiles, and live editing.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "story",
+    "express",
+    "socket.io",
+    "jwt",
+    "collaboration"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "socket.io": "^4.8.1"
+  }
+}
