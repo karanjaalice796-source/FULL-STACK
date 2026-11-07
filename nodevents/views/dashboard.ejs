@@ -1,0 +1,168 @@
+<%- include('partials/head', { title: 'Planner dashboard' }) %>
+<%
+  const tones = {
+    wedding: 'coral',
+    birthday: 'saffron',
+    graduation: 'teal',
+    corporate: 'plum',
+    'baby-family': 'saffron',
+    religious: 'plum',
+    entertainment: 'coral',
+    education: 'teal',
+    sports: 'teal',
+    'private-gathering': 'sand',
+    community: 'plum',
+    'business-promotion': 'saffron',
+    other: 'sand',
+  };
+  const upcomingEvents = events.filter((event) => !event.isPast);
+  const pastEvents = events.filter((event) => event.isPast);
+  const focusEvent = upcomingEvents[0] || events[0] || null;
+  const summary = {
+    upcoming: upcomingEvents.length,
+    vendors: events.reduce((total, event) => total + Number(event.vendor_count), 0),
+    replied: events.reduce((total, event) => total + Number(event.replied_count), 0),
+    awaiting: events.reduce((total, event) => total + Number(event.pending_count), 0),
+  };
+  const attentionEvents = upcomingEvents.filter((event) => Number(event.pending_count) > 0).slice(0, 4);
+%>
+<div class="dash">
+  <section class="d-hero" id="overview">
+    <div>
+      <p class="eyebrow">Planner dashboard</p>
+      <h1>Your events, all in one place</h1>
+      <p class="d-sub">Keep dates and vendor confirmations in view as your plans come together.</p>
+    </div>
+    <a class="button primary" href="#new">＋ New event</a>
+  </section>
+
+  <nav class="planner-portal-links panel" aria-label="Planner dashboard sections">
+    <a href="/analytics">Overview and analytics</a>
+    <a href="/client-event-requests">Client Event Requests</a>
+    <a href="/my-events">My Events</a>
+    <a href="/clients">Client Management</a>
+    <a href="<%= focusEvent ? `/events/${focusEvent.id}/logistics` : '/vendors' %>">Vendor Management</a>
+    <a href="#bookings">Bookings</a>
+    <a href="<%= focusEvent ? `/events/${focusEvent.id}/budget` : '#new' %>">Budget and Expenses</a>
+    <a href="<%= focusEvent ? `/events/${focusEvent.id}/budget` : '#new' %>">Payments and Invoices</a>
+    <a href="<%= focusEvent ? `/events/${focusEvent.id}/logistics` : '#new' %>">Tasks and Schedules</a>
+    <a href="/reports">Reports</a>
+    <a href="#messages">Messages</a>
+    <a href="#settings">Settings</a>
+  </nav>
+
+  <details class="d-new" id="new">
+    <summary><span class="plus" aria-hidden="true">+</span>Create an event<span class="d-hint">Add the date, venue, and event type</span></summary>
+    <form class="d-form" method="post" action="/events">
+      <label>Event name<input name="title" maxlength="120" placeholder="e.g. Maya & Jordan's wedding" required></label>
+      <label>Date<input type="date" name="event_date" required></label>
+      <label>Venue<input name="venue" maxlength="160" placeholder="Venue or location"></label>
+      <label>Event type
+        <select name="event_type" required>
+          <option value="other" <%= selectedEventType === 'other' ? 'selected' : '' %>>Other (blank event)</option>
+          <% Object.entries(templates).forEach(([key, template]) => { %><option value="<%= key %>" <%= selectedEventType === key ? 'selected' : '' %>><%= template.label %></option><% }) %>
+        </select>
+      </label>
+      <label class="wide-field">Venue and arrival notes<textarea name="venue_notes" maxlength="1000" placeholder="Entrance, loading area, parking, or access details"></textarea></label>
+      <button class="primary" type="submit">Create event</button>
+    </form>
+  </details>
+
+  <section class="panel">
+    <h2>Planning workspaces</h2>
+    <p>Keep new requests and approved event planning in their own sections.</p>
+    <p><a class="button" href="/client-event-requests">Review client event requests</a> <a class="button" href="/my-events">Manage My Events</a> <a class="button" href="/analytics">Open analytics</a></p>
+  </section>
+
+  <section class="panel" id="bookings">
+    <h2>Vendor Booking Requests</h2>
+    <p class="muted">Review vendor bookings requested by your clients. Accepting adds the vendor to the event and sends an invitation; declining requires a reason.</p>
+    <% if (bookingRequests.length) { %>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Client and event</th><th>Vendor</th><th>Requested details</th><th>Actions</th></tr></thead>
+          <tbody><% bookingRequests.forEach((booking) => { %>
+            <tr>
+              <td><strong><%= booking.client_name %></strong><br><a href="/events/<%= booking.event_id %>"><%= booking.event_title %></a><br><span class="muted"><%= booking.event_date %></span></td>
+              <td><%= booking.business_name %><br><span class="muted"><%= booking.category %></span></td>
+              <td><%= booking.message || 'No additional notes.' %></td>
+              <td>
+                <form method="post" action="/client-vendor-bookings/<%= booking.id %>/decision">
+                  <input type="hidden" name="decision" value="accept">
+                  <button class="primary" type="submit">Accept and invite</button>
+                </form>
+                <details>
+                  <summary>Decline request</summary>
+                  <form method="post" action="/client-vendor-bookings/<%= booking.id %>/decision">
+                    <input type="hidden" name="decision" value="decline">
+                    <label>Reason<textarea name="reason" maxlength="1000" rows="2" required></textarea></label>
+                    <button type="submit">Decline with reason</button>
+                  </form>
+                </details>
+              </td>
+            </tr>
+          <% }) %></tbody>
+        </table>
+      </div>
+    <% } else { %><p class="muted">No vendor booking requests are waiting for review.</p><% } %>
+  </section>
+
+  <section class="panel" id="messages">
+    <h2>Client messages</h2>
+    <% if (plannerMessages.length) { %>
+      <ol class="timeline">
+        <% plannerMessages.forEach((message) => { %><li>
+          <div class="when"><strong><%= message.sender_role === 'client' ? message.client_name : 'You' %></strong><br><span class="muted"><%= message.created_at %></span></div>
+          <div><strong><%= message.event_title || 'General message' %></strong><p><%= message.message %></p><a href="/clients/<%= message.client_id %>#messages">Open conversation</a></div>
+        </li><% }) %>
+      </ol>
+    <% } else { %><p class="muted">Client conversations will appear here.</p><% } %>
+    <a class="button" href="/clients">Manage client conversations</a>
+  </section>
+
+  <ul class="d-stats" aria-label="Event and vendor summary">
+    <li class="d-stat tone-coral">
+      <span class="d-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span>
+      <strong data-count="<%= summary.upcoming %>"><%= summary.upcoming %></strong><span>Upcoming events</span>
+    </li>
+    <li class="d-stat tone-saffron">
+      <span class="d-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><path d="M3 20v-1a6 6 0 0 1 12 0v1M16 5a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v1"></path></svg></span>
+      <strong data-count="<%= summary.vendors %>"><%= summary.vendors %></strong><span>Vendors invited</span>
+    </li>
+    <li class="d-stat tone-teal">
+      <span class="d-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path><circle cx="12" cy="12" r="10"></circle></svg></span>
+      <strong data-count="<%= summary.replied %>"><%= summary.replied %></strong><span>Vendor replies received</span>
+    </li>
+    <li class="d-stat tone-plum">
+      <span class="d-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></span>
+      <strong data-count="<%= summary.awaiting %>"><%= summary.awaiting %></strong><span>Awaiting a reply</span>
+    </li>
+  </ul>
+
+  <div class="d-main">
+    <aside class="d-side">
+      <section class="d-attn">
+        <h2>Vendor replies</h2>
+        <% if (attentionEvents.length) { %>
+          <p class="muted">These upcoming events still have vendors to hear from.</p>
+          <ul class="plain">
+            <% attentionEvents.forEach((event) => { %>
+              <li class="<%= event.daysUntil <= 7 ? 'lvl-soon' : '' %>">
+                <a href="/events/<%= event.id %>"><strong><%= event.title %></strong></a><br>
+                <span class="muted"><%= event.pending_count %> awaiting reply · <%= event.daysUntil === 0 ? 'today' : event.daysUntil === 1 ? 'tomorrow' : `in ${event.daysUntil} days` %></span>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %><p class="muted">No pending vendor replies for upcoming events. You’re all caught up.</p><% } %>
+      </section>
+    </aside>
+  </div>
+</div>
+<section class="panel planner-settings" id="settings">
+  <h2>Planner settings</h2>
+  <p>Your workspace uses <strong><%= user.email %></strong> as its sign-in address.</p>
+  <p class="muted">Update your account password from the <a href="/auth">planner sign-in page</a> or manage your Nodevents subscription in <a href="/plans">Plans and payments</a>.</p>
+</section>
+<%- include('partials/platform-rating', { platformRating, returnTo: '/dashboard' }) %>
+<script src="/dashboard.js" defer></script>
+<%- include('partials/foot') %>
