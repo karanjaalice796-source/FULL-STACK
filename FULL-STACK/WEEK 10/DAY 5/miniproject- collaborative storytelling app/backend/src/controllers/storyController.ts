@@ -1,5 +1,6 @@
 import { asyncHandler, field, HttpError, parseId } from "../helpers/http"
 import { createStory, deleteStory, getStory, listStories, listVersions, updateStory } from "../models/storyModel"
+import { emitStoryUpdated } from "../realtime"
 
 const MAX_TITLE = 255
 const MAX_TEXT = 20000
@@ -29,7 +30,9 @@ export const update = asyncHandler(async (req, res) => {
   if (!existing) throw new HttpError(404, "Story not found.")
   const title = body.title !== undefined ? field(body.title, "Title", 1, MAX_TITLE) : existing.title
   const content = body.content !== undefined ? field(body.content, "Story text", 1, MAX_TEXT) : existing.content
-  res.json(await updateStory(id, req.userId!, title, content))
+  const story = await updateStory(id, req.userId!, title, content)
+  emitStoryUpdated(story)
+  res.json(story)
 })
 
 export const remove = asyncHandler(async (req, res) => {

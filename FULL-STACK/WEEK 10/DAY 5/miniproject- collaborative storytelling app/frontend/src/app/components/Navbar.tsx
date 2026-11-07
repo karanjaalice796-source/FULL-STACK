@@ -19,6 +19,7 @@ export default function Navbar() {
           <>
             <NavLink to="/" end>Stories</NavLink>
             <NavLink to="/stories/new">Start a story</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
           </>
         ) : (
           <>

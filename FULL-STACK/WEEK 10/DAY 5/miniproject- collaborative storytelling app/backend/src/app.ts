@@ -7,6 +7,7 @@ import { errorHandler, notFound } from "./middleware/errorHandler"
 import authRoutes from "./routes/authRoutes"
 import commentRoutes from "./routes/commentRoutes"
 import contributorRoutes from "./routes/contributorRoutes"
+import profileRoutes from "./routes/profileRoutes"
 import storyRoutes from "./routes/storyRoutes"
 
 const app = express()
@@ -26,6 +27,7 @@ app.use("/api", authRoutes)
 app.use("/api/stories", storyRoutes)
 app.use("/api/contributors", contributorRoutes)
 app.use("/api/comments", commentRoutes)
+app.use("/api/profile", profileRoutes)
 app.use(notFound)
 app.use(errorHandler)
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { io } from "socket.io-client"
 import type { StoryVersion } from "@shared"
 import {
   deleteStory,
@@ -24,6 +25,7 @@ function StoryPage({ storyId }: { storyId: number }) {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const me = useAppSelector((state) => state.auth.user)!
+  const accessToken = useAppSelector((state) => state.auth.accessToken)
   const story = useAppSelector((state) => state.stories.items.find((item) => item.id === storyId))
   const { draft, saving, error, versions } = useAppSelector((state) => state.stories)
   const [missing, setMissing] = useState(false)
@@ -31,6 +33,21 @@ function StoryPage({ storyId }: { storyId: number }) {
   useEffect(() => {
     void dispatch(fetchStory(storyId)).unwrap().catch(() => setMissing(true))
   }, [dispatch, storyId])
+
+  useEffect(() => {
+    if (!accessToken) return
+    const socket = io(import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, "") ?? "http://localhost:4000", {
+      auth: { token: accessToken },
+      withCredentials: true,
+    })
+    socket.on("connect", () => socket.emit("story:join", storyId))
+    socket.on("story:updated", (event: { storyId: number }) => {
+      if (event.storyId === storyId) void dispatch(fetchStory(storyId))
+    })
+    return () => {
+      socket.disconnect()
+    }
+  }, [accessToken, dispatch, storyId])
 
   if (missing) {
     return <><h1>Story not found</h1><p className="note">It may have been deleted.</p><Link to="/">Back to the stories</Link></>

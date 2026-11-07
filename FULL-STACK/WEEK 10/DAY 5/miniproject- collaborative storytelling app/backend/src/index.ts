@@ -1,11 +1,15 @@
+import { createServer } from "node:http"
 import app from "./app"
 import { config } from "./config"
 import { initDb } from "./db/init"
 import { pool } from "./db/pool"
+import { attachRealtime } from "./realtime"
 
 async function start(): Promise<void> {
   await initDb()
-  const server = app.listen(config.port, () => {
+  const server = createServer(app)
+  attachRealtime(server)
+  server.listen(config.port, () => {
     console.log(`Inkwell API listening on port ${config.port}`)
   })
   const shutdown = () => {

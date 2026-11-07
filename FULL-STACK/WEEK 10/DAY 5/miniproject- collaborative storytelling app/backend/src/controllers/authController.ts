@@ -41,7 +41,10 @@ export const login = asyncHandler(async (req, res) => {
   if (!row || !matches) throw new HttpError(401, "Invalid credentials.")
 
   setRefreshCookie(res, row.id)
-  res.json({ accessToken: signAccess(row.id), user: { id: row.id, username: row.username, email: row.email } })
+  res.json({
+    accessToken: signAccess(row.id),
+    user: { id: row.id, username: row.username, email: row.email, avatar_url: row.avatar_url },
+  })
 })
 
 export const refresh = asyncHandler(async (req, res) => {

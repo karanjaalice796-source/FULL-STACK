@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import NewStory from "./pages/NewStory"
+import Profile from "./pages/Profile"
 import Signup from "./pages/Signup"
 import StoryViewer from "./pages/StoryViewer"
 
@@ -37,6 +38,7 @@ export default function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/stories/new" element={<NewStory />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/stories/:id" element={<StoryViewer />} />
         </Route>
         <Route path="*" element={<NotFound />} />

@@ -25,6 +25,8 @@ The API runs at `http://localhost:4000`; Vite runs at `http://localhost:5173`. D
 
 The API health check is available at `GET /api/health`. The frontend opens in a dark notebook theme; use the sun/moon control to switch themes. Login and signup are available in the interface; story routes and contributor operations require authentication.
 
+When a story author or contributor saves an edit, authenticated collaborators viewing that story receive a Socket.IO update and refresh the story immediately. The profile page lets you change your username and avatar image URL.
+
 ## Scripts
 
 | Where | Script | What it does |
@@ -76,6 +78,11 @@ All API routes are under `/api`. Except register, login, refresh, and logout, en
 | POST | `/contributors` | Add a contributor by user ID or email |
 | GET | `/contributors/:story_id` | List contributors |
 | DELETE | `/contributors/:id` | Remove a contributor |
+| GET / PATCH | `/profile` | Read or update your username and avatar URL |
+
+The profile page shows the number of stories you created and contributed to. Avatars use a public HTTP(S) image URL; leave the field blank to use a generated avatar.
+
+Socket.IO connections use the same short-lived JWT access token as the REST API. Only the story author and contributors can join a story's live-update room.
 
 ## Deploy on Render
 

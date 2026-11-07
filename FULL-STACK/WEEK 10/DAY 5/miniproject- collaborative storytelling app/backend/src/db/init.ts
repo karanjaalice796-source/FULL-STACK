@@ -5,8 +5,10 @@ CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
-  password_hash TEXT NOT NULL
+  password_hash TEXT NOT NULL,
+  avatar_url TEXT
 );
+ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url TEXT;
 CREATE TABLE IF NOT EXISTS stories (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
