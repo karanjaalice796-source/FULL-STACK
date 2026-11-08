@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8fc">
+    <meta name="description" content="A thoughtful home for your job search. Track applications, interviews, contacts and next steps.">
+    <title>Trackly — Your job search, in one place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <section class="auth-screen" id="auth-screen" hidden>
+      <a class="brand auth-brand" href="/"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>trackly<span class="brand-period">.</span></span></a>
+      <div class="auth-card">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE MORE CLARITY, EVERY DAY</p>
+        <h1 id="auth-title">Welcome back.</h1>
+        <p class="auth-copy" id="auth-copy">Your next chapter is still waiting. Pick up where you left off.</p>
+        <form id="auth-form">
+          <label class="form-field" id="auth-name-wrap" hidden>Your name<input id="auth-name" name="name" autocomplete="name" maxlength="80"></label>
+          <label class="form-field">Email address<input id="auth-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+          <label class="form-field">Password<input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="200" placeholder="At least 8 characters"></label>
+          <p class="form-error" id="auth-error" role="alert" hidden></p>
+          <button class="button button-primary auth-submit" id="auth-submit" type="submit">Sign in</button>
+        </form>
+        <p class="auth-switch"><span id="auth-switch-copy">New to Trackly?</span> <button class="text-button" id="auth-switch" type="button">Create an account</button></p>
+      </div>
+      <p class="auth-note">Your search is personal. Your data stays yours.</p>
+    </section>
+
+    <div class="app-shell" id="app-shell" hidden>
+      <aside class="sidebar" id="mobile-nav" aria-label="Main navigation">
+        <a class="brand" href="#overview" aria-label="Trackly home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>trackly<span class="brand-period">.</span></span></a>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="nav-list" aria-label="Workspace pages">
+          <a class="nav-item active" href="#overview" data-page="overview"><span class="nav-icon">▦</span> Overview</a>
+          <a class="nav-item" href="#jobs" data-page="jobs"><span class="nav-icon">▤</span> Applications <span class="nav-count" id="nav-count">0</span></a>
+          <a class="nav-item" href="#board" data-page="board"><span class="nav-icon">▥</span> Pipeline</a>
+          <a class="nav-item" href="#interviews" data-page="interviews"><span class="nav-icon">◷</span> Interviews</a>
+          <a class="nav-item" href="#contacts" data-page="contacts"><span class="nav-icon">♧</span> Contacts</a>
+          <a class="nav-item" href="#calendar" data-page="calendar"><span class="nav-icon">▦</span> Calendar</a>
+          <a class="nav-item" href="#stats" data-page="stats"><span class="nav-icon">⌁</span> Insights</a>
+          <a class="nav-item" href="#learning" data-page="learning"><span class="nav-icon">✎</span> Learning</a>
+        </nav>
+        <div class="sidebar-divider"></div>
+        <div class="workspace-label">YOUR SEARCH</div>
+        <div class="search-tip"><p>Every application is a step closer to the right opportunity.</p></div>
+        <div class="sidebar-footer">
+          <div class="avatar" id="profile-avatar">JD</div>
+          <div class="profile-copy"><strong id="profile-name">Job seeker</strong><span>Personal workspace</span></div>
+          <button class="profile-menu" id="settings-shortcut" type="button" aria-label="Open settings">···</button>
+        </div>
+      </aside>
+      <button class="nav-backdrop" id="nav-backdrop" type="button" aria-label="Close navigation" tabindex="-1"></button>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-heading"><button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false"><span></span><span></span><span></span></button><div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-title">Overview</strong></div></div>
+          <div class="topbar-right"><span class="today-label" id="today-label"></span><button class="top-avatar" id="profile-shortcut" aria-label="Open settings">JD</button></div>
+        </header>
+        <section class="page-content" id="page-content"></section>
+      </main>
+    </div>
+
+    <dialog class="job-dialog" id="job-dialog" aria-labelledby="dialog-title">
+      <form id="job-form">
+        <div class="dialog-heading"><div><p class="eyebrow">YOUR CAREER, YOUR PACE</p><h2 id="dialog-title">Add an application</h2></div><button class="close-button" data-close="job-dialog" type="button" aria-label="Close dialog">×</button></div>
+        <input id="job-id" type="hidden">
+        <div class="form-grid">
+          <label class="form-field form-full">Job title <span class="required-mark">*</span><input id="job-title" required maxlength="120" placeholder="e.g. Product Designer"></label>
+          <label class="form-field">Company <span class="required-mark">*</span><input id="job-company" required maxlength="120" placeholder="e.g. Acme Studio"></label>
+          <label class="form-field">Location<input id="job-location" maxlength="160" placeholder="e.g. Remote, New York"></label>
+          <label class="form-field">Status<select id="job-status"><option>Wishlist</option><option>Applied</option><option>Phone Screen</option><option>Interview</option><option>Offer</option><option>Rejected</option><option>Withdrawn</option></select></label>
+          <label class="form-field">Priority<select id="job-priority"><option value="0">Normal</option><option value="1">★ Priority</option><option value="2">★★ High</option><option value="3">★★★ Urgent</option></select></label>
+          <label class="form-field">Date applied<input id="job-date" type="date"></label>
+          <label class="form-field">Follow-up date<input id="job-follow-up" type="date"></label>
+          <label class="form-field">Salary minimum<input id="job-salary-min" type="number" min="0" step="1000" placeholder="e.g. 80000"></label>
+          <label class="form-field">Salary maximum<input id="job-salary-max" type="number" min="0" step="1000" placeholder="e.g. 110000"></label>
+          <label class="form-field form-full">Job posting link<input id="job-link" type="url" maxlength="1000" placeholder="https://company.com/careers/role"></label>
+          <label class="form-field form-full">Tags <span class="optional-mark">COMMA SEPARATED</span><input id="job-tags" maxlength="360" placeholder="remote, dream job, startup"></label>
+          <label class="form-field form-full">Notes<textarea id="job-notes" maxlength="5000" rows="3" placeholder="Anything you want to remember about this role..."></textarea></label>
+        </div>
+        <p class="form-error" id="job-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-secondary" data-close="job-dialog" type="button">Cancel</button><button class="button button-primary" type="submit" id="save-job">Save application</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="job-dialog" id="interview-dialog" aria-labelledby="interview-dialog-title">
+      <form id="interview-form">
+        <div class="dialog-heading"><div><p class="eyebrow">SHOW UP AS YOURSELF</p><h2 id="interview-dialog-title">Plan an interview</h2></div><button class="close-button" data-close="interview-dialog" type="button" aria-label="Close dialog">×</button></div>
+        <label class="form-field">Application <select id="interview-job" required></select></label>
+        <div class="form-grid form-top-gap">
+          <label class="form-field">Interview type<input id="interview-type" required maxlength="50" placeholder="e.g. Technical"></label>
+          <label class="form-field">Date and time<input id="interview-date" type="datetime-local" required></label>
+          <label class="form-field form-full">Location or meeting link<input id="interview-location" maxlength="160" placeholder="Office address or video link"></label>
+          <label class="form-field form-full">Prep notes<textarea id="interview-notes" rows="3" maxlength="2000" placeholder="Questions to ask, people to meet..."></textarea></label>
+        </div>
+        <p class="form-error" id="interview-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-secondary" data-close="interview-dialog" type="button">Cancel</button><button class="button button-primary" type="submit">Save interview</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="job-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+      <form id="contact-form">
+        <div class="dialog-heading"><div><p class="eyebrow">GOOD CONVERSATIONS OPEN DOORS</p><h2 id="contact-dialog-title">Add a contact</h2></div><button class="close-button" data-close="contact-dialog" type="button" aria-label="Close dialog">×</button></div>
+        <label class="form-field">Application <select id="contact-job" required></select></label>
+        <div class="form-grid form-top-gap">
+          <label class="form-field">Name<input id="contact-name" required maxlength="100" placeholder="e.g. Alex Morgan"></label>
+          <label class="form-field">Role<input id="contact-role" maxlength="100" placeholder="e.g. Hiring manager"></label>
+          <label class="form-field">Email<input id="contact-email" type="email" maxlength="254" placeholder="alex@company.com"></label>
+          <label class="form-field">LinkedIn URL<input id="contact-linkedin" type="url" maxlength="1000" placeholder="https://linkedin.com/in/..."></label>
+        </div>
+        <p class="form-error" id="contact-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-secondary" data-close="contact-dialog" type="button">Cancel</button><button class="button button-primary" type="submit">Save contact</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="job-dialog document-dialog" id="document-dialog" aria-labelledby="document-dialog-title">
+      <form id="document-form">
+        <div class="dialog-heading"><div><p class="eyebrow">KEEP YOUR BEST WORK CLOSE</p><h2 id="document-dialog-title">Application documents</h2><p class="panel-subtitle" id="document-job-label"></p></div><button class="close-button" data-close="document-dialog" type="button" aria-label="Close dialog">×</button></div>
+        <input id="document-job-id" type="hidden">
+        <div id="document-list" class="document-list"></div>
+        <div class="document-add-form">
+          <label class="form-field">Document name<input id="document-name" required maxlength="120" placeholder="e.g. Product design resume"></label>
+          <div class="form-grid">
+            <label class="form-field">Type<select id="document-type"><option>Resume</option><option>Cover letter</option><option>Portfolio</option><option>Work sample</option><option>Other</option></select></label>
+            <label class="form-field">Document link<input id="document-url" type="url" required maxlength="1000" placeholder="https://..."></label>
+          </div>
+          <p class="form-error" id="document-error" role="alert" hidden></p>
+          <div class="dialog-actions"><button class="button button-primary" type="submit">Add document link</button></div>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
